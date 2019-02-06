@@ -13,12 +13,14 @@ import javax.swing.JPanel;
 import javax.swing.JLayeredPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JRadioButton;
 
 public class Interface {
 
 	private JFrame frame;
 	private JLayeredPane layeredPane;
 	private JLabel labelStatus;
+	private JButton btnCreateLabels;
 
 	/**
 	 * Launch the application.
@@ -59,7 +61,7 @@ public class Interface {
 		labelStatus = new JLabel("");
 		labelStatus.setOpaque(true);
 		labelStatus.setBackground(Color.YELLOW);
-		labelStatus.setBounds(6, 10, 16, 16);
+		labelStatus.setBounds(285, 79, 16, 16);
 		layeredPane.add(labelStatus);
 		
 		JButton btnStatus = new JButton("status");
@@ -80,12 +82,50 @@ public class Interface {
 				}
 			}
 		});
-		btnStatus.setBounds(34, 6, 83, 29);
+		btnStatus.setBounds(327, 79, 83, 29);
 		layeredPane.add(btnStatus);
+		
+		btnCreateLabels = new JButton("Create Labels");
+		btnCreateLabels.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createLabel(5);
+			}
+		});
+		btnCreateLabels.setBounds(285, 38, 117, 29);
+		layeredPane.add(btnCreateLabels);
+	
+	} 
+	
+	public void createLabel (int numLabels) {
+		int x=20, y=20, width=40, height=16;
+		JLabel[] jLabelAgent = new JLabel[numLabels];
+		JLabel[] jLabelAgentStatus = new JLabel[numLabels];
+		for (int i = 0; i < numLabels; i++, y+=20) {
+			jLabelAgent[i] = new JLabel("label");
+			jLabelAgentStatus[i] = new JLabel(""); 
+			jLabelAgent[i].setBounds(x, y, width, height);
+			jLabelAgentStatus[i].setBounds(80, y, 16, 16);
+			jLabelAgentStatus[i].setOpaque(true);
+			switch (getRandomIntegerBetweenRange(0,2)) {
+			case 0:
+				jLabelAgentStatus[i].setBackground(Color.yellow);
+				break;
+			case 1:
+				jLabelAgentStatus[i].setBackground(Color.green);
+				break;
+			case 2:
+				jLabelAgentStatus[i].setBackground(Color.red);
+				break;
+				default:
+					break;
+			}
+			layeredPane.add(jLabelAgent[i]);
+			layeredPane.add(jLabelAgentStatus[i]);
+		}
 	}
+	
 	public static int getRandomIntegerBetweenRange(int min, int max){
 	    double x = (int)(Math.random()*((max-min)+1))+min;
 	    return (int) x;
 	}
-
 }
