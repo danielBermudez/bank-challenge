@@ -22,7 +22,7 @@ public class Interface {
 	private JFrame frame;
 	private JLayeredPane layeredPane;
 	private JButton btnCreateLabels;
-	String[] AgentsList = {"Cashier","Cashier","Cashier","Cashier","Supervisor","Supervisor","Director"};
+	String[] AgentsList = {"Cashier 1","Cashier 2","Cashier 3","Cashier 4","Supervisor 1","Supervisor 2","Director"};
 	private JSpinner spinnerClients;
 
 
@@ -54,18 +54,18 @@ public class Interface {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		layeredPane = new JLayeredPane();
-		layeredPane.setBounds(6, 6, 438, 266);
+		layeredPane.setBounds(6, 6, 438, 566);
 		frame.getContentPane().add(layeredPane);
 		
 		btnCreateLabels = new JButton("Dispatcher");
 		btnCreateLabels.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				createLabel(AgentsList.length);
+//				createLabel(AgentsList.length);
 			}
 		});
 		btnCreateLabels.setBounds(315, 6, 117, 29);
@@ -73,13 +73,14 @@ public class Interface {
 		
 		spinnerClients = new JSpinner();
 		layeredPane.setLayer(spinnerClients, 0);
-		spinnerClients.setBounds(145, 6, 33, 26);
+		spinnerClients.setBounds(123, 6, 51, 26);
 		layeredPane.add(spinnerClients);
 		
 		JButton btnNewButton = new JButton("Clients");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				createLabelClients((Integer) spinnerClients.getValue());
+				createLabelAgents(AgentsList.length);
 			}
 		});
 		btnNewButton.setBounds(186, 6, 117, 29);
@@ -87,7 +88,7 @@ public class Interface {
 	
 	} 
 	
-	public void createLabel (int numLabels) {
+	public void createLabelAgents (int numLabels) {
 		int x=30, y=40, width=80, height=16;
 		JLabel[] jLabelAgent = new JLabel[numLabels];
 		JLabel[] jLabelAgentStatus = new JLabel[numLabels];
@@ -97,19 +98,7 @@ public class Interface {
 			jLabelAgent[i].setBounds(x, y, width, height);
 			jLabelAgentStatus[i].setBounds(x-20, y, 16, 16);
 			jLabelAgentStatus[i].setOpaque(true);
-			switch (getRandomIntegerBetweenRange(0,2)) {
-			case 0:
-				jLabelAgentStatus[i].setBackground(Color.yellow);
-				break;
-			case 1:
-				jLabelAgentStatus[i].setBackground(Color.green);
-				break;
-			case 2:
-				jLabelAgentStatus[i].setBackground(Color.red);
-				break;
-				default:
-					break;
-			}
+			jLabelAgentStatus[i].setBackground(Color.red);
 			layeredPane.add(jLabelAgent[i]);
 			layeredPane.add(jLabelAgentStatus[i]);
 		}
