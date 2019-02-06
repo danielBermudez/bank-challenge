@@ -1,5 +1,6 @@
 package com.bank.challenge.vista;
 
+import java.util.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -21,6 +22,8 @@ public class Interface {
 	private JLayeredPane layeredPane;
 	private JLabel labelStatus;
 	private JButton btnCreateLabels;
+	String[] AgentsList = {"Cashier","Cashier","Cashier","Cashier","Supervisor","Supervisor","Director"};
+
 
 	/**
 	 * Launch the application.
@@ -88,7 +91,7 @@ public class Interface {
 		btnCreateLabels = new JButton("Create Labels");
 		btnCreateLabels.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				createLabel(5);
+				createLabel(AgentsList.length);
 			}
 		});
 		btnCreateLabels.setBounds(285, 38, 117, 29);
@@ -97,14 +100,14 @@ public class Interface {
 	} 
 	
 	public void createLabel (int numLabels) {
-		int x=20, y=20, width=40, height=16;
+		int x=30, y=20, width=80, height=16;
 		JLabel[] jLabelAgent = new JLabel[numLabels];
 		JLabel[] jLabelAgentStatus = new JLabel[numLabels];
 		for (int i = 0; i < numLabels; i++, y+=20) {
-			jLabelAgent[i] = new JLabel("label");
+			jLabelAgent[i] = new JLabel(AgentsList[i]);
 			jLabelAgentStatus[i] = new JLabel(""); 
 			jLabelAgent[i].setBounds(x, y, width, height);
-			jLabelAgentStatus[i].setBounds(80, y, 16, 16);
+			jLabelAgentStatus[i].setBounds(x-20, y, 16, 16);
 			jLabelAgentStatus[i].setOpaque(true);
 			switch (getRandomIntegerBetweenRange(0,2)) {
 			case 0:
