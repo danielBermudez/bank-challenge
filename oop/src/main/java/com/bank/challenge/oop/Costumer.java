@@ -4,20 +4,22 @@ public class Costumer {
 	
 	private int id;
 	private String name;
-	private int phone;
+	private String phone;
 	private String email;
-	private Account account;
+	private Account [] account;
+	private Issue issues;
 	
 	
 	//Costumer Constructor
 	
-	public Costumer(int idCostumer, String nameCostumer, int phoneCostumer, String emailCostumer, Account accountCostumer) {
+	public Costumer(int idCostumer, String nameCostumer, String phoneCostumer, String emailCostumer, Account [] accountCostumer, Issue pqrCostumer ) {
 		
 		this.id = idCostumer;
 		this.name = nameCostumer;
 		this.phone = phoneCostumer;
 		this.email = emailCostumer;
 		this.account = accountCostumer;
+		this.issues = pqrCostumer;
 		
 	}
 
@@ -45,12 +47,12 @@ public class Costumer {
 	}
 
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -62,6 +64,30 @@ public class Costumer {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+
+	public Account[] getAccount() {
+		return account;
+	}
+
+
+
+	public void setAccount(Account[] account) {
+		this.account = account;
+	}
+
+
+
+	public Issue getIssues() {
+		return issues;
+	}
+
+
+
+	public void setIssues(Issue issues) {
+		this.issues = issues;
 	}
 
 }
