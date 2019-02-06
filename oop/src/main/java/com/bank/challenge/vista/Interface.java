@@ -15,14 +15,15 @@ import javax.swing.JLayeredPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
 
 public class Interface {
 
 	private JFrame frame;
 	private JLayeredPane layeredPane;
-	private JLabel labelStatus;
 	private JButton btnCreateLabels;
 	String[] AgentsList = {"Cashier","Cashier","Cashier","Cashier","Supervisor","Supervisor","Director"};
+	private JSpinner spinnerClients;
 
 
 	/**
@@ -61,46 +62,33 @@ public class Interface {
 		layeredPane.setBounds(6, 6, 438, 266);
 		frame.getContentPane().add(layeredPane);
 		
-		labelStatus = new JLabel("");
-		labelStatus.setOpaque(true);
-		labelStatus.setBackground(Color.YELLOW);
-		labelStatus.setBounds(285, 79, 16, 16);
-		layeredPane.add(labelStatus);
-		
-		JButton btnStatus = new JButton("status");
-		btnStatus.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				switch (getRandomIntegerBetweenRange(0,2)) {
-				case 0:
-					labelStatus.setBackground(Color.yellow);
-					break;
-				case 1:
-					labelStatus.setBackground(Color.green);
-					break;
-				case 2:
-					labelStatus.setBackground(Color.red);
-					break;
-					default:
-						break;
-				}
-			}
-		});
-		btnStatus.setBounds(327, 79, 83, 29);
-		layeredPane.add(btnStatus);
-		
-		btnCreateLabels = new JButton("Create Labels");
+		btnCreateLabels = new JButton("Dispatcher");
 		btnCreateLabels.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				createLabel(AgentsList.length);
 			}
 		});
-		btnCreateLabels.setBounds(285, 38, 117, 29);
+		btnCreateLabels.setBounds(315, 6, 117, 29);
 		layeredPane.add(btnCreateLabels);
+		
+		spinnerClients = new JSpinner();
+		layeredPane.setLayer(spinnerClients, 0);
+		spinnerClients.setBounds(145, 6, 33, 26);
+		layeredPane.add(spinnerClients);
+		
+		JButton btnNewButton = new JButton("Clients");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createLabelClients((Integer) spinnerClients.getValue());
+			}
+		});
+		btnNewButton.setBounds(186, 6, 117, 29);
+		layeredPane.add(btnNewButton);
 	
 	} 
 	
 	public void createLabel (int numLabels) {
-		int x=30, y=20, width=80, height=16;
+		int x=30, y=40, width=80, height=16;
 		JLabel[] jLabelAgent = new JLabel[numLabels];
 		JLabel[] jLabelAgentStatus = new JLabel[numLabels];
 		for (int i = 0; i < numLabels; i++, y+=20) {
@@ -122,6 +110,21 @@ public class Interface {
 				default:
 					break;
 			}
+			layeredPane.add(jLabelAgent[i]);
+			layeredPane.add(jLabelAgentStatus[i]);
+		}
+	}
+	public void createLabelClients (int numLabels) {
+		int x=160, y=40, width=80, height=16;
+		JLabel[] jLabelAgent = new JLabel[numLabels];
+		JLabel[] jLabelAgentStatus = new JLabel[numLabels];
+		for (int i = 0; i < numLabels; i++, y+=20) {
+			jLabelAgent[i] = new JLabel("Client "+i);
+			jLabelAgentStatus[i] = new JLabel(""); 
+			jLabelAgent[i].setBounds(x, y, width, height);
+			jLabelAgentStatus[i].setBounds(x-20, y, 16, 16);
+			jLabelAgentStatus[i].setOpaque(true);
+			jLabelAgentStatus[i].setBackground(Color.red);
 			layeredPane.add(jLabelAgent[i]);
 			layeredPane.add(jLabelAgentStatus[i]);
 		}
