@@ -7,7 +7,7 @@ public class Ticket {
 	private Agent agent;
 	private int attentionTime;
 	private int account;
-	private boolean status;
+	private String status;
 	
 	
 	
@@ -76,12 +76,12 @@ public class Ticket {
 	}
 
 
-	public boolean isStatus() {
+	public String isStatus() {
 		return status;
 	}
 
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	

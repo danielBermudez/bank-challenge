@@ -4,14 +4,15 @@ public class Account {
 	
 	private int id;
 	private int balance;
+	private Transaction transactions;
 	
 	
 	//Account Constructor
-	public Account (int idAcc, int balanceAcc) {
+	public Account (int idAcc, int balanceAcc, Transaction trans) {
 		
 		this.id = idAcc;
 		this.balance = balanceAcc;
-		
+		this.transactions = trans;
 	}
 	
 	
@@ -31,6 +32,16 @@ public class Account {
 
 	public void setBalance(int balance) {
 		this.balance = balance;
+	}
+
+
+	public Transaction getTransactions() {
+		return transactions;
+	}
+
+
+	public void setTransactions(Transaction transactions) {
+		this.transactions = transactions;
 	}
 	
 	
