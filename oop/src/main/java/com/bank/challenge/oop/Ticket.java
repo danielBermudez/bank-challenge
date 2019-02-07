@@ -6,13 +6,13 @@ public class Ticket {
 	private Costumer costumer;
 	private Agent agent;
 	private int attentionTime;
-	private int account;
+	private Account account;
 	private String status;
 	
 	
 	
 	//Agent Constructor
-	public Ticket(int idTicket, Costumer costumT, Agent agT, int timeT, int accT, boolean statusT) {
+	public Ticket(int idTicket, Costumer costumT, Agent agT, int timeT, Account accT, boolean statusT) {
 		
 		this.id = idTicket;
 		this.costumer = costumT;
@@ -66,12 +66,12 @@ public class Ticket {
 	}
 
 
-	public int getAccount() {
+	public Account getAccount() {
 		return account;
 	}
 
 
-	public void setAccount(int account) {
+	public void setAccount(Account account) {
 		this.account = account;
 	}
 
