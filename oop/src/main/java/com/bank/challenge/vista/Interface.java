@@ -9,6 +9,10 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import com.bank.challenge.controller.Main;
+import com.bank.challenge.oop.*;
+
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.JLayeredPane;
@@ -16,7 +20,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
-import com.bank.challenge.oop.Main;
 
 public class Interface {
 
@@ -24,23 +27,34 @@ public class Interface {
 	private JLayeredPane layeredPane;
 	private JButton btnCreateLabels;
 	String[] AgentsList = {"Cashier 1","Cashier 2","Cashier 3","Cashier 4","Supervisor 1","Supervisor 2","Director"};
-	private JSpinner spinnerClients;
-
+	private ArrayList<Costumer> costumers ; 
+	private ArrayList<Agent> agents;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Interface window = new Interface();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//		
+//		});
+//	}
+	public void run(Interface window) {
+		try {
+			
+			window.frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Interface(ArrayList<Costumer> costumers, ArrayList<Agent> agents) {
+		super();
+		this.costumers = costumers;
+		this.agents = agents;
+		initialize();
+		createEvents();
 	}
 
 	/**
@@ -48,6 +62,7 @@ public class Interface {
 	 */
 	public Interface() {
 		initialize();
+		createEvents();
 	}
 
 	/**
@@ -72,21 +87,11 @@ public class Interface {
 		btnCreateLabels.setBounds(315, 6, 117, 29);
 		layeredPane.add(btnCreateLabels);
 		
-		spinnerClients = new JSpinner();
-		layeredPane.setLayer(spinnerClients, 0);
-		spinnerClients.setBounds(123, 6, 51, 26);
-		layeredPane.add(spinnerClients);
+		btnNewButton = new JButton("Clients");
 		
-		JButton btnNewButton = new JButton("Clients");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-//				createLabelClients((Integer) spinnerClients.getValue());
-//				createLabelClients(Main.main(AgentsList.length));
-//				createLabelAgents(AgentsList.length);
-			}
-		});
 		btnNewButton.setBounds(186, 6, 117, 29);
 		layeredPane.add(btnNewButton);
+	
 	
 	} 
 	
@@ -105,6 +110,10 @@ public class Interface {
 			layeredPane.add(jLabelAgentStatus[i]);
 		}
 	}
+	public void loadData(ArrayList<Costumer> costumers,ArrayList<Agent> agents) {
+		this.costumers = costumers;
+		this.agents= agents;
+	}
 	public void createLabelClients (int numLabels) {
 		int x=160, y=40, width=80, height=16;
 		JLabel[] jLabelAgent = new JLabel[numLabels];
@@ -120,9 +129,36 @@ public class Interface {
 			layeredPane.add(jLabelAgentStatus[i]);
 		}
 	}
+	public void createLabelClients2 (ArrayList<Costumer> costumers) {
+		int numLabels = costumers.size();
+		int x=160, y=40, width=80, height=16;
+		JLabel[] jLabelAgent = new JLabel[numLabels];
+		JLabel[] jLabelAgentStatus = new JLabel[numLabels];
+		for (int i = 0; i < numLabels; i++, y+=20) {
+			jLabelAgent[i] = new JLabel(costumers.get(i).getName());
+			jLabelAgentStatus[i] = new JLabel(""); 
+			jLabelAgent[i].setBounds(x, y, width, height);
+			jLabelAgentStatus[i].setBounds(x-20, y, 16, 16);
+			jLabelAgentStatus[i].setOpaque(true);
+			jLabelAgentStatus[i].setBackground(Color.red);
+			layeredPane.add(jLabelAgent[i]);
+			layeredPane.add(jLabelAgentStatus[i]);
+		}
+	}
 	
 	public static int getRandomIntegerBetweenRange(int min, int max){
 	    double x = (int)(Math.random()*((max-min)+1))+min;
 	    return (int) x;
+	}
+	public void createEvents() {
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+//				createLabelClients((Integer) spinnerClients.getValue());
+				
+				createLabelClients2(costumers);
+				
+//				createLabelAgents(AgentsList.length);
+			}
+		});
 	}
 }

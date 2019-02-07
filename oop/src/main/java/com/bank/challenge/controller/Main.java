@@ -1,4 +1,4 @@
-package com.bank.challenge.oop;
+package com.bank.challenge.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -9,9 +9,13 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
+import com.bank.challenge.oop.Account;
+import com.bank.challenge.oop.Costumer;
+import com.bank.challenge.vista.*;
+
 public class Main {
 
-	public static List<Costumer> costumerList = new ArrayList<Costumer>();
+	public static ArrayList<Costumer> costumerList = new ArrayList<Costumer>();
 
 
 
@@ -70,6 +74,12 @@ public class Main {
 //			System.out.println("Hello THere");
 //
 //		}
+		Interface ventana = new Interface(costumerList,null);
+	
+		ventana.run(ventana);
+//		ventana.main(args);
+		
 	}
+	
 
 }	
