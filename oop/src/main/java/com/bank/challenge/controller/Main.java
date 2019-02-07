@@ -25,9 +25,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Account [] hola = new Account[3];
+		
 		Account acc = new Account(1, 1, null);
-		hola[0] = acc;
+		
+		ArrayList<Account> accountList = new ArrayList();
+		accountList.add(acc);
 		Agent agent ;
 		agent = new Cashier(101, "Pedro", false);
 		agentList.add(agent);
@@ -42,15 +44,15 @@ public class Main {
 		
 		
 		
-		Costumer costum = new Costumer(1538, "Andres", "2575186", "email@gmail.com", hola, null);
-		Costumer costum1 = new Costumer(8855, "Fabian", "45125364", "lol@gmail.com", hola, null);
-		Costumer costum2 = new Costumer(9898, "Fernando", "846545", "fornite@gmail.com", hola, null);
-		Costumer costum3 = new Costumer(1538, "Ana", "54686", "smite@gmail.com", hola, null);
-		Costumer costum4 = new Costumer(1538, "Daniel", "8496", "ll@gmail.com", hola, null);
-		Costumer costum5 = new Costumer(1538, "Miguel", "754545", "sss@gmail.com", hola, null);
-		Costumer costum6 = new Costumer(1538, "Juan", "884", "wwww@gmail.com", hola, null);
-		Costumer costum7 = new Costumer(1538, "Sofia", "846432", "ddd@gmail.com", hola, null);
-		Costumer costum8 = new Costumer(1538, "Catalina", "684564", "ooooo@gmail.com", hola, null);
+		Costumer costum = new Costumer(1538, "Andres", "2575186", "email@gmail.com", accountList, null);
+		Costumer costum1 = new Costumer(8855, "Fabian", "45125364", "lol@gmail.com", accountList, null);
+		Costumer costum2 = new Costumer(9898, "Fernando", "846545", "fornite@gmail.com", accountList, null);
+		Costumer costum3 = new Costumer(1538, "Ana", "54686", "smite@gmail.com", accountList, null);
+		Costumer costum4 = new Costumer(1538, "Daniel", "8496", "ll@gmail.com", accountList, null);
+		Costumer costum5 = new Costumer(1538, "Miguel", "754545", "sss@gmail.com", accountList, null);
+		Costumer costum6 = new Costumer(1538, "Juan", "884", "wwww@gmail.com", accountList, null);
+		Costumer costum7 = new Costumer(1538, "Sofia", "846432", "ddd@gmail.com", accountList, null);
+		Costumer costum8 = new Costumer(1538, "Catalina", "684564", "ooooo@gmail.com", accountList, null);
 
 		costumerList.add(costum);
 		costumerList.add(costum1);
