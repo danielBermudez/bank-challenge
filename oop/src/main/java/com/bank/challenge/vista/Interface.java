@@ -114,21 +114,7 @@ public class Interface {
 		this.costumers = costumers;
 		this.agents= agents;
 	}
-	public void createLabelClients (int numLabels) {
-		int x=160, y=40, width=80, height=16;
-		JLabel[] jLabelAgent = new JLabel[numLabels];
-		JLabel[] jLabelAgentStatus = new JLabel[numLabels];
-		for (int i = 0; i < numLabels; i++, y+=20) {
-			jLabelAgent[i] = new JLabel("Client "+i);
-			jLabelAgentStatus[i] = new JLabel(""); 
-			jLabelAgent[i].setBounds(x, y, width, height);
-			jLabelAgentStatus[i].setBounds(x-20, y, 16, 16);
-			jLabelAgentStatus[i].setOpaque(true);
-			jLabelAgentStatus[i].setBackground(Color.red);
-			layeredPane.add(jLabelAgent[i]);
-			layeredPane.add(jLabelAgentStatus[i]);
-		}
-	}
+	
 	public void createLabelClients2 (ArrayList<Costumer> costumers) {
 		int numLabels = costumers.size();
 		int x=160, y=40, width=80, height=16;
