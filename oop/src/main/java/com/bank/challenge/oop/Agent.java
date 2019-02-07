@@ -18,13 +18,13 @@ public abstract class Agent {
 	
 	
 	//Abstract method that introduce money into a costumer bank account
-	public abstract void deposit();
+	public abstract Transaction deposit(Costumer costum, int value);
 	
 	//Abstract method that retrieve money of a costumer bank account	
-	public abstract void withdraw();
+	public abstract void withdraw(Costumer costum, int value);
 	
 	//Abstract method that attend the issues of the costumer
-	public abstract void issues();
+	public abstract void issues(Costumer costum);
 
 
 	

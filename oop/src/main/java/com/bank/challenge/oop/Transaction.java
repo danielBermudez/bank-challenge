@@ -7,12 +7,12 @@ public class Transaction {
 	private Date date;
 	private double value;
 	private String type;
-	private String status;
+	private boolean status;
 	private String description;
 	
 	
 	
-	public Transaction(Date date, double value, String type, String status, String description) {
+	public Transaction(Date date, double value, String type, boolean status, String description) {
 		super();
 		this.date = date;
 		this.value = value;
@@ -59,13 +59,13 @@ public class Transaction {
 
 
 
-	public String getStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 
 
 
-	public void setStatus(String status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 

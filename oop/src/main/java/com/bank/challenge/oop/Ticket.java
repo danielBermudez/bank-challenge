@@ -1,5 +1,7 @@
 package com.bank.challenge.oop;
 
+import java.util.Random;
+
 public class Ticket {
 
 	private int id;
@@ -7,7 +9,7 @@ public class Ticket {
 	private Agent agent;
 	private int attentionTime;
 	private int account;
-	private String status;
+	private int status;
 	
 	
 	
@@ -23,6 +25,16 @@ public class Ticket {
 
 	
 
+	public Ticket attendTicket (Costumer costum, Agent Ag) {
+		
+		Random rn = new Random();
+		int num = rn.nextInt(2);
+		
+		
+		
+		return null;
+				
+	}
 	
 	//Getters and Setters of the attributes
 
@@ -76,12 +88,12 @@ public class Ticket {
 	}
 
 
-	public String isStatus() {
+	public int isStatus() {
 		return status;
 	}
 
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	
