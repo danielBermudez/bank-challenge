@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
+import com.bank.challenge.oop.Main;
 
 public class Interface {
 
@@ -79,8 +80,9 @@ public class Interface {
 		JButton btnNewButton = new JButton("Clients");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				createLabelClients((Integer) spinnerClients.getValue());
-				createLabelAgents(AgentsList.length);
+//				createLabelClients((Integer) spinnerClients.getValue());
+//				createLabelClients(Main.main(AgentsList.length));
+//				createLabelAgents(AgentsList.length);
 			}
 		});
 		btnNewButton.setBounds(186, 6, 117, 29);
