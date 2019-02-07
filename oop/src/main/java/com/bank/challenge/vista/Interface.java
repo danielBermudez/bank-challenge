@@ -95,12 +95,13 @@ public class Interface {
 	
 	} 
 	
-	public void createLabelAgents (int numLabels) {
+	public void createLabelAgents (ArrayList<Agent> agents) {
+		int numLabels = agents.size();
 		int x=30, y=40, width=80, height=16;
 		JLabel[] jLabelAgent = new JLabel[numLabels];
 		JLabel[] jLabelAgentStatus = new JLabel[numLabels];
 		for (int i = 0; i < numLabels; i++, y+=20) {
-			jLabelAgent[i] = new JLabel(AgentsList[i]);
+			jLabelAgent[i] = new JLabel(agents.get(i).getName());
 			jLabelAgentStatus[i] = new JLabel(""); 
 			jLabelAgent[i].setBounds(x, y, width, height);
 			jLabelAgentStatus[i].setBounds(x-20, y, 16, 16);
@@ -114,7 +115,7 @@ public class Interface {
 		this.costumers = costumers;
 		this.agents= agents;
 	}
-	
+
 	public void createLabelClients2 (ArrayList<Costumer> costumers) {
 		int numLabels = costumers.size();
 		int x=160, y=40, width=80, height=16;
@@ -139,11 +140,8 @@ public class Interface {
 	public void createEvents() {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				createLabelClients((Integer) spinnerClients.getValue());
-				
 				createLabelClients2(costumers);
-				
-//				createLabelAgents(AgentsList.length);
+				createLabelAgents(agents);
 			}
 		});
 	}
