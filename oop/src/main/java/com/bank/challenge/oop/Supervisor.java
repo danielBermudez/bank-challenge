@@ -7,21 +7,22 @@ public class Supervisor extends Agent {
 	}
 
 	@Override
-	public void deposit() {
+	public Transaction deposit(Costumer costum, int value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void withdraw(Costumer costum, int value) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void withdraw() {
+	public void issues(Costumer costum) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void issues() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
