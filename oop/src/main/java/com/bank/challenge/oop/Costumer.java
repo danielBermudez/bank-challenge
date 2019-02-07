@@ -1,18 +1,20 @@
 package com.bank.challenge.oop;
 
+import java.util.ArrayList;
+
 public class Costumer {
 	
 	private int id;
 	private String name;
 	private String phone;
 	private String email;
-	private Account [] account;
+	private ArrayList<Account>  account;
 	private Issue issues;
 	
 	
 	//Costumer Constructor
 	
-	public Costumer(int idCostumer, String nameCostumer, String phoneCostumer, String emailCostumer, Account [] accountCostumer, Issue pqrCostumer ) {
+	public Costumer(int idCostumer, String nameCostumer, String phoneCostumer, String emailCostumer, ArrayList<Account> accountCostumer, Issue pqrCostumer ) {
 		
 		this.id = idCostumer;
 		this.name = nameCostumer;
@@ -68,13 +70,13 @@ public class Costumer {
 
 
 
-	public Account[] getAccount() {
+	public ArrayList<Account> getAccount() {
 		return account;
 	}
 
 
 
-	public void setAccount(Account[] account) {
+	public void setAccount(ArrayList<Account> account) {
 		this.account = account;
 	}
 
