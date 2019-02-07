@@ -12,6 +12,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import com.bank.challenge.oop.Account;
 import com.bank.challenge.oop.Costumer;
 import com.bank.challenge.oop.Agent;
+import com.bank.challenge.oop.*;
 import com.bank.challenge.vista.*;
 
 public class Main {
@@ -27,7 +28,20 @@ public class Main {
 		Account [] hola = new Account[3];
 		Account acc = new Account(1, 1, null);
 		hola[0] = acc;
-
+		Agent agent ;
+		agent = new Cashier(101, "Pedro", false);
+		agentList.add(agent);
+		agent = new Cashier(102, "Juan", false);
+		agentList.add(agent);
+		agent = new Cashier(103, "Camilo", false);
+		agentList.add(agent);
+		agent = new Cashier(104, "Felipe", false);
+		agentList.add(agent);
+		agent = new Supervisor(201, "David", false);
+		agentList.add(agent);
+		
+		
+		
 		Costumer costum = new Costumer(1538, "Andres", "2575186", "email@gmail.com", hola, null);
 		Costumer costum1 = new Costumer(8855, "Fabian", "45125364", "lol@gmail.com", hola, null);
 		Costumer costum2 = new Costumer(9898, "Fernando", "846545", "fornite@gmail.com", hola, null);
@@ -77,7 +91,7 @@ public class Main {
 //			System.out.println("Hello THere");
 //
 //		}
-		Interface ventana = new Interface(costumerList,null);
+		Interface ventana = new Interface(costumerList,agentList);
 	
 		ventana.run(ventana);
 //		ventana.main(args);
